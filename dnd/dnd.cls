@@ -207,8 +207,6 @@
 
 \newenvironment{ddmonster}[1][]{
     \setkeys[DMK]{ddm}{#1}
-    \FPeval{\APval}{\cmdDMK@ddm@AP}
-    \FPeval{\saveval}{\cmdDMK@ddm@save}
 
     \begin{scriptsize}
     \begin{tabular}{lr}
