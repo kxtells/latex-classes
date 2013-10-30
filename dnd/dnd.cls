@@ -6,6 +6,7 @@
 \englishtrue
 \DeclareOption{catalan}{\catalantrue \englishfalse}
 \DeclareOption{spanish}{\spanishtrue \englishfalse}
+\DeclareOption{english}{}
 \ProcessOptions\relax
 
 \NeedsTeXFormat{LaTeX2e} %Latex Version
