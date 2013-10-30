@@ -600,6 +600,9 @@
     \multicolumn{2}{p{0.9\linewidth}}{
         \textbf{skills:} {#8}
     } \\
+    % TODO I am using trunc and this creates some problems when negative numbers
+    % should be rounded down and not trunked. trunk(1.5) = floor(1.5)
+    % trunk(-1.5) != floor(-1.5)
     \multicolumn{2}{l}{
         \begin{tabular}{lll}
             \FPeval{\fue}{#1}%
