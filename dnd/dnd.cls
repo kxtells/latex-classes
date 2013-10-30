@@ -1,5 +1,13 @@
 \LoadClassWithOptions{book}
 
+\newif\ifcatalan
+\newif\ifspanish
+\newif\ifenglish
+\englishtrue
+\DeclareOption{catalan}{\catalantrue \englishfalse}
+\DeclareOption{spanish}{\spanishtrue \englishfalse}
+\ProcessOptions\relax
+
 \NeedsTeXFormat{LaTeX2e} %Latex Version
 \ProvidesClass{dnd}[2013/10/21 Latex class for Dungeons and Dragons adventures] %Class provided
 
@@ -25,7 +33,7 @@
 \setlength{\belowrulesep}{0.5pt}
 \setlist[itemize]{itemsep=0mm}
 
-%Allow page ragged bottoms. 
+%Allow page ragged bottoms.
 % do not stretch text to fill the whole page
 \raggedbottom
 
@@ -76,7 +84,7 @@
 
 % Encounter level
 % Two versions. One calculates and prints the expected XP according to level
-% and number of Players. 
+% and number of Players.
 % The other will just print the Level and XP passed as parameters
 
 \newcommand{\enclvlNC}[2]{
@@ -174,20 +182,20 @@
 \define@boolkey     [DMK] {ddm}     {svulnerable}[false]{}
 
 \presetkeys     [DMK] {ddm} {name         = name undefined,
-                             keywords     = keywords , 
-                             role         = Brute , 
-                             HP           = 1, 
-                             lvl          = 1, 
-                             xp           = 1, 
-                             initiative   = 0, 
-                             perception   = 0, 
-                             AC           = 10, 
-                             Fort         = 10, 
-                             Refl         = 10, 
-                             Will         = 10, 
-                             speed        = 5, 
-                             AP           = 0, 
-                             save         = 0, 
+                             keywords     = keywords ,
+                             role         = Brute ,
+                             HP           = 1,
+                             lvl          = 1,
+                             xp           = 1,
+                             initiative   = 0,
+                             perception   = 0,
+                             AC           = 10,
+                             Fort         = 10,
+                             Refl         = 10,
+                             Will         = 10,
+                             speed        = 5,
+                             AP           = 0,
+                             save         = 0,
                              vision       = ,
                              immune       = ,
                              resist       = ,
@@ -197,29 +205,47 @@
 
 
 \newenvironment{ddmonster}[1][]{
-    \setkeys[DMK]{ddm}{#1}  
+    \setkeys[DMK]{ddm}{#1}
     \FPeval{\APval}{\cmdDMK@ddm@AP}
     \FPeval{\saveval}{\cmdDMK@ddm@save}
-    
+
     \begin{scriptsize}
-    \begin{tabular}{lr} 
-        
+    \begin{tabular}{lr}
+
     \toprule
-    
+
     %First Row contains the Name + role and level
     \rowcolor[gray]{0.8}
     {\small \cmdDMK@ddm@name} & {\small \cmdDMK@ddm@role ,  lvl \cmdDMK@ddm@lvl}\\
-    
+
     %Second Row contains the keywords, if its Solo or Elite. And the role + xp
     \rowcolor[gray]{0.8}
     \ifDMK@ddm@solo
-        \cmdDMK@ddm@keywords & 
-        Solo (\cmdDMK@ddm@xp xp)
+        \cmdDMK@ddm@keywords &
+        \ifenglish
+        Solo
+        \fi
+        \ifcatalan
+        Solitari
+        \fi
+        \ifspanish
+        Solitario
+        \fi
+        (\cmdDMK@ddm@xp xp)
         \\
     \else
         \ifDMK@ddm@elite
-            \cmdDMK@ddm@keywords & 
-            Elite (\cmdDMK@ddm@xp xp)
+            \cmdDMK@ddm@keywords &
+            \ifenglish
+            Elite
+            \fi
+            \ifcatalan
+            Elit
+            \fi
+            \ifspanish
+            Élite
+            \fi
+            (\cmdDMK@ddm@xp xp)
             \\
         \else
             \cmdDMK@ddm@keywords & (\cmdDMK@ddm@xp xp)\\
@@ -231,24 +257,73 @@
 
     %Row with HP and Initiative
     \FPeval{\bloodied}{trunc(clip(\cmdDMK@ddm@HP/2),0)}%
-    \textbf{HP} {\cmdDMK@ddm@HP}/{\bloodied} & \textbf{Initiative} +{\cmdDMK@ddm@initiative} \\
+    \textbf{HP} {\cmdDMK@ddm@HP}/{\bloodied}
+    &
+    \ifenglish
+        \textbf{Initiative}
+    \fi
+    \ifcatalan
+        \textbf{Iniciativa}
+    \fi
+    \ifspanish
+        \textbf{Iniciativa}
+    \fi
+    +{\cmdDMK@ddm@initiative} \\
 
     %Row with Defenses and Perceptions
-    \textbf{AC}     \cmdDMK@ddm@AC, 
-    \textbf{Fort}   \cmdDMK@ddm@Fort, 
-    \textbf{Refx}   \cmdDMK@ddm@Refl, 
-    \textbf{Will}    \cmdDMK@ddm@Will
-    & 
-    \textbf{Perception} +\cmdDMK@ddm@perception \\
+    \ifenglish
+        \textbf{AC}     \cmdDMK@ddm@AC,
+        \textbf{Fort}   \cmdDMK@ddm@Fort,
+        \textbf{Refx}   \cmdDMK@ddm@Refl,
+        \textbf{Will}    \cmdDMK@ddm@Will
+        &
+        \textbf{Perception} +\cmdDMK@ddm@perception \\
+    \fi
+    \ifcatalan
+        \textbf{CA}     \cmdDMK@ddm@AC,
+        \textbf{Fort}   \cmdDMK@ddm@Fort,
+        \textbf{Refl}   \cmdDMK@ddm@Refl,
+        \textbf{Vol}    \cmdDMK@ddm@Will
+        &
+        \textbf{Percepció} +\cmdDMK@ddm@perception \\
+    \fi
+    \ifspanish
+        \textbf{CA}     \cmdDMK@ddm@AC,
+        \textbf{Fort}   \cmdDMK@ddm@Fort,
+        \textbf{Refl}   \cmdDMK@ddm@Refl,
+        \textbf{Vol}    \cmdDMK@ddm@Will
+        &
+        \textbf{Percepción} +\cmdDMK@ddm@perception \\
+    \fi
+
 
     %Row with Speed, Saves and AP
     %TODO! Would like to print AP and Save conditionally
-                \textbf{Speed} \cmdDMK@ddm@speed,
-                \textbf{Save} +\cmdDMK@ddm@save,
-                \textbf{AP} +\cmdDMK@ddm@AP
-                &
-                visió: \cmdDMK@ddm@vision
-                \\
+    \ifenglish
+        \textbf{Speed} \cmdDMK@ddm@speed,
+        \textbf{Save} +\cmdDMK@ddm@save,
+        \textbf{AP} +\cmdDMK@ddm@AP
+        &
+        vision: \cmdDMK@ddm@vision
+        \\
+    \fi
+    \ifcatalan
+        \textbf{Vel} \cmdDMK@ddm@speed,
+        \textbf{salv} +\cmdDMK@ddm@save,
+        \textbf{AP} +\cmdDMK@ddm@AP
+        &
+        visió: \cmdDMK@ddm@vision
+        \\
+    \fi
+    \ifspanish
+        \textbf{Vel} \cmdDMK@ddm@speed,
+        \textbf{salv} +\cmdDMK@ddm@save,
+        \textbf{AP} +\cmdDMK@ddm@AP
+        &
+        visión: \cmdDMK@ddm@vision
+        \\
+    \fi
+
 
     \ifDMK@ddm@simmune
         \multicolumn{2}{p{0.9\linewidth}}{\textbf{Immune} \cmdDMK@ddm@immune}\\
@@ -270,7 +345,7 @@
     %\ifthenelse{ \APval > 0 \AND \saveval > 0 }
     %{
     %%speed ap and save
-    %    \multicolumn{2}{l}{ 
+    %    \multicolumn{2}{l}{
     %            \textbf{Speed} \cmdDMK@ddm@speed,
     %            \textbf{Save} +\cmdDMK@ddm@save,
     %            \textbf{AP} +\cmdDMK@ddm@AP
@@ -290,7 +365,7 @@
 }
 {
     %FINISH MONSTER TABLE
-    \bottomrule 
+    \bottomrule
     \end{tabular}
     \end{scriptsize}
     \vspace{5pt}
@@ -301,28 +376,60 @@
     \midrule
     \multicolumn{2}{c}{
         \cellcolor[gray]{0.7}
+        \ifenglish
             Standard Actions
+        \fi
+        \ifcatalan
+            Accions Estandard
+        \fi
+        \ifspanish
+            Acciones Estandard
+        \fi
     } \\
 }
 \newcommand{\ddmMovementSection}{
     \midrule
     \multicolumn{2}{c}{
         \cellcolor[gray]{0.7}
+        \ifenglish
             Movement Actions
+        \fi
+        \ifcatalan
+            Accions Moviment
+        \fi
+        \ifspanish
+            Acciones Movimiento
+        \fi
     } \\
 }
 \newcommand{\ddmMinorSection}{
     \midrule
     \multicolumn{2}{c}{
         \cellcolor[gray]{0.7}
+        \ifenglish
             Minor Actions
+        \fi
+        \ifcatalan
+            Accions Menors
+        \fi
+        \ifspanish
+            Acciones Menores
+        \fi
     } \\
 }
 \newcommand{\ddmTraitsSection}{
     \midrule
     \multicolumn{2}{c}{
         \cellcolor[gray]{0.7}
+        \ifenglish
             Traits
+        \fi
+        \ifcatalan
+            Trets Especials
+        \fi
+        \ifspanish
+            Características Especiales
+        \fi
     } \\
 }
 \newcommand{\ddmExtraSection}{
@@ -354,8 +461,19 @@
     \rowcolor[gray]{0.8}
     {#1} & {#2} \\
     \midrule
-    \multicolumn{2}{p{0.9\linewidth}}{Atac: #3} \\
-    \multicolumn{2}{p{0.9\linewidth}}{Hit: #4} \\
+    \ifenglish
+        \multicolumn{2}{p{0.9\linewidth}}{Attack: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Hit: #4} \\
+    \fi
+    \ifcatalan
+        \multicolumn{2}{p{0.9\linewidth}}{Atac: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Encert: #4} \\
+    \fi
+    \ifspanish
+        \multicolumn{2}{p{0.9\linewidth}}{Ataque: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Acierto: #4} \\
+    \fi
+
 }
 
 
@@ -367,9 +485,21 @@
     \rowcolor[gray]{0.8}
     {#1} & {#2} \\
     \midrule
-    \multicolumn{2}{p{0.9\linewidth}}{Atac: #3} \\
-    \multicolumn{2}{p{0.9\linewidth}}{Hit: #4} \\
-    \multicolumn{2}{p{0.9\linewidth}}{Miss: #5} \\
+    \ifenglish
+        \multicolumn{2}{p{0.9\linewidth}}{Attack: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Hit: #4} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Miss: #5} \\
+    \fi
+    \ifcatalan
+        \multicolumn{2}{p{0.9\linewidth}}{Atac: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Encert: #4} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Falla: #5} \\
+    \fi
+    \ifspanish
+        \multicolumn{2}{p{0.9\linewidth}}{Ataque: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Acierto: #4} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Fallo: #5} \\
+    \fi
 }
 
 \newcommand{\ddmEffect}[3]{
@@ -377,7 +507,15 @@
     \rowcolor[gray]{0.8}
     {#1} & {#2} \\
     \midrule
-    \multicolumn{2}{p{0.9\linewidth}}{Efecte: #3} \\
+    \ifenglish
+        \multicolumn{2}{p{0.9\linewidth}}{Effect: #3} \\
+    \fi
+    \ifcatalan
+        \multicolumn{2}{p{0.9\linewidth}}{Efecte: #3} \\
+    \fi
+    \ifspanish
+        \multicolumn{2}{p{0.9\linewidth}}{Efecto: #3} \\
+    \fi
 }
 
 \newcommand{\ddmTrigger}[4]{
@@ -385,8 +523,18 @@
     \rowcolor[gray]{0.8}
     {#1} & {#2} \\
     \midrule
-    \multicolumn{2}{p{0.9\linewidth}}{Trigger: #3} \\
-    \multicolumn{2}{p{0.9\linewidth}}{Efecte: #4} \\
+    \ifenglish
+        \multicolumn{2}{p{0.9\linewidth}}{Trigger: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Effect: #4} \\
+    \fi
+    \ifcatalan
+        \multicolumn{2}{p{0.9\linewidth}}{Desencadenant: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Efecte: #4} \\
+    \fi
+    \ifspanish
+        \multicolumn{2}{p{0.9\linewidth}}{Desencadenante: #3} \\
+        \multicolumn{2}{p{0.9\linewidth}}{Efecto: #4} \\
+    \fi
 }
 
 \newcommand{\ddmAura}[3]{
@@ -407,7 +555,15 @@
 
 \newcommand{\ddmEquip}[1]{
     \midrule
-    \multicolumn{2}{l}{ \textbf{Equip:} #1 }\\
+    \ifenglish
+        \multicolumn{2}{l}{ \textbf{Equip:} #1 }\\
+    \fi
+    \ifcatalan
+        \multicolumn{2}{l}{ \textbf{Equip:} #1 }\\
+    \fi
+    \ifspanish
+        \multicolumn{2}{l}{ \textbf{Equipo:} #1 }\\
+    \fi
 }
 
 
@@ -426,7 +582,15 @@
 
 \newcommand{\ddmAlignLang}[2]{
     \midrule
-    \textbf{Alineació:} #1 & \textbf{Idiomes:} #2 \\
+    \ifenglish
+        \textbf{Alignment:} #1 & \textbf{Languages:} #2 \\
+    \fi
+    \ifcatalan
+        \textbf{Alineació:} #1 & \textbf{Idiomes:} #2 \\
+    \fi
+    \ifspanish
+        \textbf{Alineación:} #1 & \textbf{Idiomas:} #2 \\
+    \fi
 }
 
 % Calculate monster stats
@@ -437,37 +601,85 @@
     \multicolumn{2}{p{0.9\linewidth}}{
         \textbf{skills:} {#8}
     } \\
-    \multicolumn{2}{l}{ 
+    \multicolumn{2}{l}{
         \begin{tabular}{lll}
             \FPeval{\fue}{#1}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\fuemod}{ trunc( ((\fue - 10)/2) + \hlvl,0)}%
-            \textbf{Fue} \fue (\fuemod) 
-            & 
+            \ifenglish
+                \textbf{Str} \fue (\fuemod)
+            \fi
+            \ifcatalan
+                \textbf{For} \fue (\fuemod)
+            \fi
+            \ifspanish
+                \textbf{Fue} \fue (\fuemod)
+            \fi
+            &
             \FPeval{\des}{#2}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\desmod}{trunc(((\des - 10)/2) + \hlvl,0)}%
-            \textbf{Des} \des (\desmod) 
-            & 
+            \ifenglish
+                \textbf{Dex} \des (\desmod)
+            \fi
+            \ifcatalan
+                \textbf{Des} \des (\desmod)
+            \fi
+            \ifspanish
+                \textbf{Des} \des (\desmod)
+            \fi
+            &
             \FPeval{\sab}{#3}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\sabmod}{trunc(((\sab - 10)/2) + \hlvl,0)}%
-            \textbf{Sab} \sab (\sabmod) 
-            \\     
+            \ifenglish
+                \textbf{Wis} \sab (\sabmod)
+            \fi
+            \ifcatalan
+                \textbf{Sav} \sab (\sabmod)
+            \fi
+            \ifspanish
+                \textbf{Sab} \sab (\sabmod)
+            \fi
+            \\
             \FPeval{\con}{#4}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\conmod}{trunc(((\con - 10)/2) + \hlvl,0)}%
-            \textbf{Con} \con (\conmod) 
-            & 
+            \ifenglish
+                \textbf{Con} \con (\conmod)
+            \fi
+            \ifcatalan
+                \textbf{Con} \con (\conmod)
+            \fi
+            \ifspanish
+                \textbf{Con} \con (\conmod)
+            \fi
+            &
             \FPeval{\int}{#5}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\intmod}{trunc(((\int- 10)/2) + \hlvl,0)}%
-            \textbf{Int} \int (\intmod) 
-            & 
+            \ifenglish
+                \textbf{Int} \int (\intmod)
+            \fi
+            \ifcatalan
+                \textbf{Int} \int (\intmod)
+            \fi
+            \ifspanish
+                \textbf{Int} \int (\intmod)
+            \fi
+            &
             \FPeval{\car}{#6}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\carmod}{trunc(((\car- 10)/2) + \hlvl,0)}%
-            \textbf{Car} \car (\carmod) 
+            \ifenglish
+                \textbf{Car} \car (\carmod)
+            \fi
+            \ifcatalan
+                \textbf{Car} \car (\carmod)
+            \fi
+            \ifspanish
+                \textbf{Car} \car (\carmod)
+            \fi
             \\
         \end{tabular}
     }\\
@@ -503,48 +715,48 @@
     %\multicolumn{2}{p{0.9\linewidth}}{
     %    \textbf{skills:} {\cmdDMS@ddm@skills}
     %} \\
-    %\multicolumn{2}{l}{ 
+    %\multicolumn{2}{l}{
 
     %    %\begin{tabular}{lll}
     %    %    \FPeval{\fue}{\cmdDMS@ddm@Str}%
     %    %    \FPeval{\hlvl}{trunc(\cmdDMS@ddm@lvl/2,0)}%
 
     %    %    \FPeval{\fuemod}{ trunc( ((\fue - 10)/2) + \hlvl,0)}%
-    %    %    \textbf{Fue} \fue (\fuemod) 
-    %    %    & 
+    %    %    \textbf{Fue} \fue (\fuemod)
+    %    %    &
     %    %    \FPeval{\des}{\cmdDMS@ddm@Dex}%
     %    %    \FPeval{\hlvl}{trunc(\cmdDMS@ddm@lvl/2,0)}%
 
     %    %    \FPeval{\desmod}{trunc(((\des - 10)/2) + \hlvl,0)}%
-    %    %    \textbf{Des} \des (\desmod) 
-    %    %    & 
+    %    %    \textbf{Des} \des (\desmod)
+    %    %    &
 
     %    %    \FPeval{\sab}{\cmdDMS@ddm@Wis}%
     %    %    \FPeval{\hlvl}{trunc(\cmdDMS@ddm@lvl/2,0)}%
 
     %    %    \FPeval{\sabmod}{trunc(((\sab - 10)/2) + \hlvl,0)}%
-    %    %    \textbf{Sab} \sab (\sabmod) 
-    %    %    \\     
+    %    %    \textbf{Sab} \sab (\sabmod)
+    %    %    \\
 
     %    %    \FPeval{\con}{\cmdDMS@ddm@Con}%
     %    %    \FPeval{\hlvl}{trunc(\cmdDMS@ddm@lvl/2,0)}%
 
     %    %    \FPeval{\conmod}{trunc(((\con - 10)/2) + \hlvl,0)}%
-    %    %    \textbf{Con} \con (\conmod) 
-    %    %    & 
+    %    %    \textbf{Con} \con (\conmod)
+    %    %    &
 
     %    %    \FPeval{\int}{\cmdDMS@ddm@Int}%
     %    %    \FPeval{\hlvl}{trunc(\cmdDMS@ddm@lvl/2,0)}%
 
     %    %    \FPeval{\intmod}{trunc(((\int- 10)/2) + \hlvl,0)}%
-    %    %    \textbf{Int} \int (\intmod) 
-    %    %    & 
+    %    %    \textbf{Int} \int (\intmod)
+    %    %    &
 
     %    %    \FPeval{\car}{\cmdDMS@ddm@Cha}%
     %    %    \FPeval{\hlvl}{trunc(\cmdDMS@ddm@lvl/2,0)}%
 
     %    %    \FPeval{\carmod}{trunc(((\car- 10)/2) + \hlvl,0)}%
-    %    %    \textbf{Car} \car (\carmod) 
+    %    %    \textbf{Car} \car (\carmod)
     %    %    \\
     %    %\end{tabular}
     %}\\
@@ -559,16 +771,16 @@
 
 
 \presetkeys     [DMK] {npc} {name         = name,
-                             summary      = summary, 
+                             summary      = summary,
                                            }{}
 
 
 
 \newenvironment{ddnpc}[1][]{
-    \setkeys[DMK]{npc}{#1}  
+    \setkeys[DMK]{npc}{#1}
 
     \begin{scriptsize}
-    \begin{tabular*}{0.9\linewidth}{l} 
+    \begin{tabular*}{0.9\linewidth}{l}
     \toprule
 
     \rowcolor[gray]{0.8}
@@ -577,8 +789,8 @@
     \emph{\cmdDMK@npc@summary}\\
 }
 {
-    %FINISH NPC table 
-    \bottomrule 
+    %FINISH NPC table
+    \bottomrule
     \end{tabular*}
     \end{scriptsize}
     \vspace{5pt}
@@ -616,8 +828,16 @@
 }
 
 \newcommand{\ddMonsterLore}[2]{
-    \textbf{{#1} 
+    \textbf{{#1}
+    \ifenglish
         Lore
+    \fi
+    \ifcatalan
+        Coneixement
+    \fi
+    \ifspanish
+        Conocimiento
+    \fi
     } \newline
     {#2}
 }
