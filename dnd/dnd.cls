@@ -597,6 +597,12 @@
 % Str, Dex, Sab, Con, Int, Car, Level, ExtraSkillsText
 %
 %
+
+\newcommand{\abilityeval}[2]{
+    \FPeval{\abmod}{trunc(-5 + round(#1/2 -0.1,0) + round(#2/2 -0.1,0) ,0)}
+    \abmod
+}
+
 \newcommand{\ddmStats}[8]{
     \multicolumn{2}{p{0.9\linewidth}}{
         \textbf{skills:} {#8}
@@ -604,37 +610,24 @@
     % TODO I am using trunc and this creates some problems when negative numbers
     % should be rounded down and not trunked. trunk(1.5) = floor(1.5)
     % trunk(-1.5) != floor(-1.5)
+
     \multicolumn{2}{l}{
-        \begin{tabular}{lll}
-            \FPeval{\fue}{#1}%
-            \FPeval{\hlvl}{trunc(#7/2,0)}%
-            \FPeval{\fuemod}{ trunc( ((\fue - 10)/2) + \hlvl,0)}%
-            \textbf{ \ifenglish Str \fi \ifcatalan For \fi \ifspanish Fue \fi} \fue (\fuemod)
+        \begin{tabular}{l|l|l}
+            %\FPeval{\fue}{#1}
+            %\FPeval{\hfue}{round(#1/2 -0.1,0)}
+            %\FPeval{\hlvl}{round(#7/2 -0.1,0)}
+            %\FPeval{\fuemod}{ trunc( -5 + \hfue + \hlvl ,0)}
+            \textbf{ \ifenglish Str \fi \ifcatalan For \fi \ifspanish Fue \fi}  #1  \abilityeval{#1}{#7}
             &
-            \FPeval{\des}{#2}%
-            \FPeval{\hlvl}{trunc(#7/2,0)}%
-            \FPeval{\desmod}{trunc(((\des - 10)/2) + \hlvl,0)}%
-            \textbf{ \ifenglish Dex \fi \ifcatalan Des \fi \ifspanish Des \fi} \des (\desmod)
+            \textbf{ \ifenglish Dex \fi \ifcatalan Des \fi \ifspanish Des \fi}  #2  \abilityeval{#2}{#7}
             &
-            \FPeval{\sab}{#3}%
-            \FPeval{\hlvl}{trunc(#7/2,0)}%
-            \FPeval{\sabmod}{trunc(((\sab - 10)/2) + \hlvl,0)}%
-            \textbf{ \ifenglish Wis \fi \ifcatalan Sav \fi \ifspanish Sab \fi} \sab (\sabmod)
+            \textbf{ \ifenglish Wis \fi \ifcatalan Sav \fi \ifspanish Sab \fi}  #3  \abilityeval{#3}{#7}
             \\
-            \FPeval{\con}{#4}%
-            \FPeval{\hlvl}{trunc(#7/2,0)}%
-            \FPeval{\conmod}{trunc(((\con - 10)/2) + \hlvl,0)}%
-            \textbf{ \ifenglish Con \fi \ifcatalan Con \fi \ifspanish Con \fi} \con (\conmod)
+            \textbf{ \ifenglish Con \fi \ifcatalan Con \fi \ifspanish Con \fi}  #4  \abilityeval{#4}{#7}
             &
-            \FPeval{\int}{#5}%
-            \FPeval{\hlvl}{trunc(#7/2,0)}%
-            \FPeval{\intmod}{trunc(((\int- 10)/2) + \hlvl,0)}%
-            \textbf{ \ifenglish Int \fi \ifcatalan Int \fi \ifspanish Int \fi} \int (\intmod)
+            \textbf{ \ifenglish Int \fi \ifcatalan Int \fi \ifspanish Int \fi}  #5  \abilityeval{#5}{#7}
             &
-            \FPeval{\car}{#6}%
-            \FPeval{\hlvl}{trunc(#7/2,0)}%
-            \FPeval{\carmod}{trunc(((\car- 10)/2) + \hlvl,0)}%
-            \textbf{ \ifenglish Cha \fi \ifcatalan Car \fi \ifspanish Car \fi} \car (\carmod)
+            \textbf{ \ifenglish Cha \fi \ifcatalan Car \fi \ifspanish Car \fi}  #6  \abilityeval{#6}{#7}
             \\
         \end{tabular}
     }\\
