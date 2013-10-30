@@ -820,7 +820,17 @@
     \begin{tabular}{l}
         \toprule
 
-        \multicolumn{1}{p{0.8\linewidth}}{ \ding{72}  \hspace{\stretch{1}} \textbf{REGLES:} {#1} \hspace{\stretch{1}} \ding{72} } \\
+        \multicolumn{1}{p{0.8\linewidth}}{ \ding{72}  \hspace{\stretch{1}} 
+        \ifenglish
+            \textbf{RULES:} 
+        \fi
+        \ifcatalan
+            \textbf{REGLES:} 
+        \fi
+        \ifspanish
+            \textbf{REGLAS:} 
+        \fi
+        {#1} \hspace{\stretch{1}} \ding{72} } \\
         \midrule
         \multicolumn{1}{p{0.8\linewidth}}{{#2}} \\
         \bottomrule
