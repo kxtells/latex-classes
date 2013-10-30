@@ -475,17 +475,17 @@
 
     \multicolumn{2}{l}{
         \begin{tabular}{l|l|l}
-            \textbf{ \transl{Str}{For}{Fue}}  #1  \emph{\abilityeval{#1}{#7}}
+            \textbf{ \transl{Str}{For}{Fue}}  #1  (\emph{\abilityeval{#1}{#7}})
             &
-            \textbf{ \transl{Dex}{Des}{Des}}  #2  \emph{\abilityeval{#2}{#7}}
+            \textbf{ \transl{Dex}{Des}{Des}}  #2  (\emph{\abilityeval{#2}{#7}})
             &
-            \textbf{ \transl{Wis}{Sav}{Sab}}  #3  \emph{\abilityeval{#3}{#7}}
+            \textbf{ \transl{Wis}{Sav}{Sab}}  #3  (\emph{\abilityeval{#3}{#7}})
             \\
-            \textbf{ \transl{Con}{Con}{Con}}  #4  \emph{\abilityeval{#4}{#7}}
+            \textbf{ \transl{Con}{Con}{Con}}  #4  (\emph{\abilityeval{#4}{#7}})
             &
-            \textbf{ \transl{Int}{Int}{Int}}  #5  \emph{\abilityeval{#5}{#7}}
+            \textbf{ \transl{Int}{Int}{Int}}  #5  (\emph{\abilityeval{#5}{#7}})
             &
-            \textbf{ \transl{Cha}{Car}{car}}  #6  \emph{\abilityeval{#6}{#7}}
+            \textbf{ \transl{Cha}{Car}{car}}  #6  (\emph{\abilityeval{#6}{#7}})
             \\
         \end{tabular}
     }\\
