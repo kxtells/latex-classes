@@ -48,6 +48,20 @@
         }
 }
 
+%Language Handling
+%Just for the 3 supported languages. English, Catalan and Spanish
+\newcommand{\transl}[3]{
+    \ifenglish
+    #1
+    \fi
+    \ifcatalan
+    #2
+    \fi
+    \ifspanish
+    #3
+    \fi
+}
+
 %Sections and subsections format
 
 \titleformat{\section}[block]      % Customise the \section command
@@ -221,29 +235,13 @@
     \rowcolor[gray]{0.8}
     \ifDMK@ddm@solo
         \cmdDMK@ddm@keywords &
-        \ifenglish
-        Solo
-        \fi
-        \ifcatalan
-        Solitari
-        \fi
-        \ifspanish
-        Solitario
-        \fi
+        \transl{Solo}{Solitari}{Solitario}
         (\cmdDMK@ddm@xp xp)
         \\
     \else
         \ifDMK@ddm@elite
             \cmdDMK@ddm@keywords &
-            \ifenglish
-            Elite
-            \fi
-            \ifcatalan
-            Elit
-            \fi
-            \ifspanish
-            Élite
-            \fi
+            \transl{Elite}{Elit}{Élite}
             (\cmdDMK@ddm@xp xp)
             \\
         \else
@@ -258,71 +256,26 @@
     \FPeval{\bloodied}{trunc(\cmdDMK@ddm@HP/2,0)}%
     \textbf{HP} {\cmdDMK@ddm@HP}/{\bloodied}
     &
-    \ifenglish
-        \textbf{Initiative}
-    \fi
-    \ifcatalan
-        \textbf{Iniciativa}
-    \fi
-    \ifspanish
-        \textbf{Iniciativa}
-    \fi
+    \textbf{\transl{Initiative}{Iniciativa}{Iniciativa}}
     +{\cmdDMK@ddm@initiative} \\
 
     %Row with Defenses and Perceptions
-    \ifenglish
-        \textbf{AC}     \cmdDMK@ddm@AC,
-        \textbf{Fort}   \cmdDMK@ddm@Fort,
-        \textbf{Refx}   \cmdDMK@ddm@Refl,
-        \textbf{Will}    \cmdDMK@ddm@Will
-        &
-        \textbf{Perception} +\cmdDMK@ddm@perception \\
-    \fi
-    \ifcatalan
-        \textbf{CA}     \cmdDMK@ddm@AC,
-        \textbf{Fort}   \cmdDMK@ddm@Fort,
-        \textbf{Refl}   \cmdDMK@ddm@Refl,
-        \textbf{Vol}    \cmdDMK@ddm@Will
-        &
-        \textbf{Percepció} +\cmdDMK@ddm@perception \\
-    \fi
-    \ifspanish
-        \textbf{CA}     \cmdDMK@ddm@AC,
-        \textbf{Fort}   \cmdDMK@ddm@Fort,
-        \textbf{Refl}   \cmdDMK@ddm@Refl,
-        \textbf{Vol}    \cmdDMK@ddm@Will
-        &
-        \textbf{Percepción} +\cmdDMK@ddm@perception \\
-    \fi
+    \textbf{\transl{AC}{CA}{CA}} \cmdDMK@ddm@AC,
+    \textbf{\transl{Fort}{Fort}{Fort}} \cmdDMK@ddm@Fort,
+    \textbf{\transl{Refx}{Refl}{Refl}} \cmdDMK@ddm@Refl,
+    \textbf{\transl{Will}{Vol}{Vol}} \cmdDMK@ddm@Refl,
+    &
+    \textbf{\transl{Perception}{Percepció}{Percepción}} +\cmdDMK@ddm@perception \\
 
 
     %Row with Speed, Saves and AP
     %TODO! Would like to print AP and Save conditionally
-    \ifenglish
-        \textbf{Speed} \cmdDMK@ddm@speed,
-        \textbf{Save} +\cmdDMK@ddm@save,
-        \textbf{AP} +\cmdDMK@ddm@AP
+    \textbf{\transl{Speed}{Vel}{Vel}} \cmdDMK@ddm@speed,
+    \textbf{\transl{Save}{Salv}{Salv}} +\cmdDMK@ddm@save,
+    \textbf{\transl{AP}{PA}{PA}} +\cmdDMK@ddm@AP
         &
-        vision: \cmdDMK@ddm@vision
+    \transl{vision}{visió}{visión}: \cmdDMK@ddm@vision
         \\
-    \fi
-    \ifcatalan
-        \textbf{Vel} \cmdDMK@ddm@speed,
-        \textbf{salv} +\cmdDMK@ddm@save,
-        \textbf{AP} +\cmdDMK@ddm@AP
-        &
-        visió: \cmdDMK@ddm@vision
-        \\
-    \fi
-    \ifspanish
-        \textbf{Vel} \cmdDMK@ddm@speed,
-        \textbf{salv} +\cmdDMK@ddm@save,
-        \textbf{AP} +\cmdDMK@ddm@AP
-        &
-        visión: \cmdDMK@ddm@vision
-        \\
-    \fi
-
 
     \ifDMK@ddm@simmune
         \multicolumn{2}{p{0.9\linewidth}}{\textbf{Immune} \cmdDMK@ddm@immune}\\
@@ -375,60 +328,28 @@
     \midrule
     \multicolumn{2}{c}{
         \cellcolor[gray]{0.7}
-        \ifenglish
-            Standard Actions
-        \fi
-        \ifcatalan
-            Accions Estandard
-        \fi
-        \ifspanish
-            Acciones Estandard
-        \fi
+        \transl{Standard Actions}{Accions Estandard}{Acciones Estandar}
     } \\
 }
 \newcommand{\ddmMovementSection}{
     \midrule
     \multicolumn{2}{c}{
         \cellcolor[gray]{0.7}
-        \ifenglish
-            Movement Actions
-        \fi
-        \ifcatalan
-            Accions Moviment
-        \fi
-        \ifspanish
-            Acciones Movimiento
-        \fi
+        \transl{Movement Actions}{Accions de Moviment}{Acciones de Movimiento}
     } \\
 }
 \newcommand{\ddmMinorSection}{
     \midrule
     \multicolumn{2}{c}{
         \cellcolor[gray]{0.7}
-        \ifenglish
-            Minor Actions
-        \fi
-        \ifcatalan
-            Accions Menors
-        \fi
-        \ifspanish
-            Acciones Menores
-        \fi
+        \transl{Minor Actions}{Accions Menors}{Acciones Menores}
     } \\
 }
 \newcommand{\ddmTraitsSection}{
     \midrule
     \multicolumn{2}{c}{
         \cellcolor[gray]{0.7}
-        \ifenglish
-            Traits
-        \fi
-        \ifcatalan
-            Trets Especials
-        \fi
-        \ifspanish
-            Características Especiales
-        \fi
+        \transl{Traits}{Trets}{Características}
     } \\
 }
 \newcommand{\ddmExtraSection}{
@@ -460,19 +381,8 @@
     \rowcolor[gray]{0.8}
     {#1} & {#2} \\
     \midrule
-    \ifenglish
-        \multicolumn{2}{p{0.9\linewidth}}{Attack: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Hit: #4} \\
-    \fi
-    \ifcatalan
-        \multicolumn{2}{p{0.9\linewidth}}{Atac: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Encert: #4} \\
-    \fi
-    \ifspanish
-        \multicolumn{2}{p{0.9\linewidth}}{Ataque: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Acierto: #4} \\
-    \fi
-
+    \multicolumn{2}{p{0.9\linewidth}}{\transl{Attack}{Atac}{Ataque}: #3} \\
+    \multicolumn{2}{p{0.9\linewidth}}{\transl{Hit}{Encert}{Acierto}: #4} \\
 }
 
 
@@ -484,21 +394,9 @@
     \rowcolor[gray]{0.8}
     {#1} & {#2} \\
     \midrule
-    \ifenglish
-        \multicolumn{2}{p{0.9\linewidth}}{Attack: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Hit: #4} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Miss: #5} \\
-    \fi
-    \ifcatalan
-        \multicolumn{2}{p{0.9\linewidth}}{Atac: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Encert: #4} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Falla: #5} \\
-    \fi
-    \ifspanish
-        \multicolumn{2}{p{0.9\linewidth}}{Ataque: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Acierto: #4} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Fallo: #5} \\
-    \fi
+    \multicolumn{2}{p{0.9\linewidth}}{\transl{Attack}{Atac}{Ataque}: #3} \\
+    \multicolumn{2}{p{0.9\linewidth}}{\transl{Hit}{Encert}{Acierto}: #4} \\
+    \multicolumn{2}{p{0.9\linewidth}}{\transl{Miss}{Falla}{Fallo}: #5} \\
 }
 
 \newcommand{\ddmEffect}[3]{
@@ -506,15 +404,7 @@
     \rowcolor[gray]{0.8}
     {#1} & {#2} \\
     \midrule
-    \ifenglish
-        \multicolumn{2}{p{0.9\linewidth}}{Effect: #3} \\
-    \fi
-    \ifcatalan
-        \multicolumn{2}{p{0.9\linewidth}}{Efecte: #3} \\
-    \fi
-    \ifspanish
-        \multicolumn{2}{p{0.9\linewidth}}{Efecto: #3} \\
-    \fi
+    \multicolumn{2}{p{0.9\linewidth}}{\transl{Effect}{Efecte}{Efecto}: #3} \\
 }
 
 \newcommand{\ddmTrigger}[4]{
@@ -522,18 +412,8 @@
     \rowcolor[gray]{0.8}
     {#1} & {#2} \\
     \midrule
-    \ifenglish
-        \multicolumn{2}{p{0.9\linewidth}}{Trigger: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Effect: #4} \\
-    \fi
-    \ifcatalan
-        \multicolumn{2}{p{0.9\linewidth}}{Desencadenant: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Efecte: #4} \\
-    \fi
-    \ifspanish
-        \multicolumn{2}{p{0.9\linewidth}}{Desencadenante: #3} \\
-        \multicolumn{2}{p{0.9\linewidth}}{Efecto: #4} \\
-    \fi
+    \multicolumn{2}{p{0.9\linewidth}}{\transl{Trigger}{Desencadenant}{Desencadenante}: #3} \\
+    \multicolumn{2}{p{0.9\linewidth}}{\transl{Effect}{Efecte}{Efecto}: #4} \\
 }
 
 \newcommand{\ddmAura}[3]{
@@ -554,29 +434,13 @@
 
 \newcommand{\ddmEquip}[1]{
     \midrule
-    \ifenglish
-        \multicolumn{2}{l}{ \textbf{Equip:} #1 }\\
-    \fi
-    \ifcatalan
-        \multicolumn{2}{l}{ \textbf{Equip:} #1 }\\
-    \fi
-    \ifspanish
-        \multicolumn{2}{l}{ \textbf{Equipo:} #1 }\\
-    \fi
+    \multicolumn{2}{l}{ \textbf{\transl{Equip}{Equip}{Equipo}:} #1 }\\
 }
 
 
 \newcommand{\ddmAlignLang}[2]{
     \midrule
-    \ifenglish
-        \textbf{Alignment:} #1 & \textbf{Languages:} #2 \\
-    \fi
-    \ifcatalan
-        \textbf{Alineació:} #1 & \textbf{Idiomes:} #2 \\
-    \fi
-    \ifspanish
-        \textbf{Alineación:} #1 & \textbf{Idiomas:} #2 \\
-    \fi
+    \textbf{\transl{Alignment}{Alineació}{Alineación}:} #1 & \textbf{\transl{Languages}{Idiomes}{Idiomas}:} #2 \\
 }
 
 
@@ -593,41 +457,35 @@
 % 18 19 4
 % 20 21 5
 
-% Calculate monster stats
-% Str, Dex, Sab, Con, Int, Car, Level, ExtraSkillsText
+% Calculate ability modifiers
+% ability value, level
 %
-%
-
 \newcommand{\abilityeval}[2]{
     \FPeval{\abmod}{trunc(-5 + round(#1/2 -0.1,0) + round(#2/2 -0.1,0) ,0)}
     \abmod
 }
 
+%Print a table of Ability values and modifiers according to ability values and
+%level. Additionally add skills if defined
+% Str, Dex, Wis, Con, Int, Cha, Level, Extra skills
 \newcommand{\ddmStats}[8]{
     \multicolumn{2}{p{0.9\linewidth}}{
         \textbf{skills:} {#8}
     } \\
-    % TODO I am using trunc and this creates some problems when negative numbers
-    % should be rounded down and not trunked. trunk(1.5) = floor(1.5)
-    % trunk(-1.5) != floor(-1.5)
 
     \multicolumn{2}{l}{
         \begin{tabular}{l|l|l}
-            %\FPeval{\fue}{#1}
-            %\FPeval{\hfue}{round(#1/2 -0.1,0)}
-            %\FPeval{\hlvl}{round(#7/2 -0.1,0)}
-            %\FPeval{\fuemod}{ trunc( -5 + \hfue + \hlvl ,0)}
-            \textbf{ \ifenglish Str \fi \ifcatalan For \fi \ifspanish Fue \fi}  #1  \abilityeval{#1}{#7}
+            \textbf{ \transl{Str}{For}{Fue}}  #1  \emph{\abilityeval{#1}{#7}}
             &
-            \textbf{ \ifenglish Dex \fi \ifcatalan Des \fi \ifspanish Des \fi}  #2  \abilityeval{#2}{#7}
+            \textbf{ \transl{Dex}{Des}{Des}}  #2  \emph{\abilityeval{#2}{#7}}
             &
-            \textbf{ \ifenglish Wis \fi \ifcatalan Sav \fi \ifspanish Sab \fi}  #3  \abilityeval{#3}{#7}
+            \textbf{ \transl{Wis}{Sav}{Sab}}  #3  \emph{\abilityeval{#3}{#7}}
             \\
-            \textbf{ \ifenglish Con \fi \ifcatalan Con \fi \ifspanish Con \fi}  #4  \abilityeval{#4}{#7}
+            \textbf{ \transl{Con}{Con}{Con}}  #4  \emph{\abilityeval{#4}{#7}}
             &
-            \textbf{ \ifenglish Int \fi \ifcatalan Int \fi \ifspanish Int \fi}  #5  \abilityeval{#5}{#7}
+            \textbf{ \transl{Int}{Int}{Int}}  #5  \emph{\abilityeval{#5}{#7}}
             &
-            \textbf{ \ifenglish Cha \fi \ifcatalan Car \fi \ifspanish Car \fi}  #6  \abilityeval{#6}{#7}
+            \textbf{ \transl{Cha}{Car}{car}}  #6  \emph{\abilityeval{#6}{#7}}
             \\
         \end{tabular}
     }\\
@@ -642,17 +500,17 @@
     % trunk(-1.5) != floor(-1.5)
     \multicolumn{2}{l}{
         \begin{tabular}{lll}
-            \textbf{ \ifenglish Str \fi \ifcatalan For \fi \ifspanish Fue \fi} #1
+            \textbf{ \transl{Str}{For}{Fue}} #1
             &
-            \textbf{ \ifenglish Dex \fi \ifcatalan Des \fi \ifspanish Des \fi} #2
+            \textbf{ \transl{Dex}{Des}{Des}} #2
             &
-            \textbf{ \ifenglish Wis \fi \ifcatalan Sav \fi \ifspanish Sab \fi} #3
+            \textbf{ \transl{Wis}{Sav}{Sab}} #3
             \\
-            \textbf{ \ifenglish Con \fi \ifcatalan Con \fi \ifspanish Con \fi} #4
+            \textbf{ \transl{Con}{Con}{Con}} #4
             &
-            \textbf{ \ifenglish Int \fi \ifcatalan Int \fi \ifspanish Int \fi} #5
+            \textbf{ \transl{Int}{Int}{Int}} #5
             &
-            \textbf{ \ifenglish Cha \fi \ifcatalan Car \fi \ifspanish Car \fi} #6
+            \textbf{ \transl{Cha}{Car}{car}} #6
             \\
         \end{tabular}
     }\\
@@ -792,16 +650,7 @@
         \toprule
 
         \multicolumn{1}{p{0.8\linewidth}}{ \ding{72}  \hspace{\stretch{1}}
-        \ifenglish
-            \textbf{RULES:}
-        \fi
-        \ifcatalan
-            \textbf{REGLES:}
-        \fi
-        \ifspanish
-            \textbf{REGLAS:}
-        \fi
-        {#1} \hspace{\stretch{1}} \ding{72} } \\
+        \textbf{\transl{RULES}{REGLES}{REGLAS}:} {#1} \hspace{\stretch{1}} \ding{72} } \\
         \midrule
         \multicolumn{1}{p{0.8\linewidth}}{{#2}} \\
         \bottomrule
@@ -811,15 +660,7 @@
 
 \newcommand{\ddMonsterLore}[2]{
     \textbf{{#1}
-    \ifenglish
-        Lore
-    \fi
-    \ifcatalan
-        Coneixement
-    \fi
-    \ifspanish
-        Conocimiento
-    \fi
+    \transl{Lore}{Coneixement}{Conocimiento}
     } \newline
     {#2}
 }
