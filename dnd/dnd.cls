@@ -675,13 +675,86 @@
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\carmod}{trunc(((\car- 10)/2) + \hlvl,0)}%
             \ifenglish
-                \textbf{Car} \car (\carmod)
+                \textbf{Cha} \car (\carmod)
             \fi
             \ifcatalan
                 \textbf{Car} \car (\carmod)
             \fi
             \ifspanish
                 \textbf{Car} \car (\carmod)
+            \fi
+            \\
+        \end{tabular}
+    }\\
+}
+
+\newcommand{\ddmStatsNoMod}[7]{
+    \multicolumn{2}{p{0.9\linewidth}}{
+        \textbf{skills:} {#7}
+    } \\
+    % TODO I am using trunc and this creates some problems when negative numbers
+    % should be rounded down and not trunked. trunk(1.5) = floor(1.5)
+    % trunk(-1.5) != floor(-1.5)
+    \multicolumn{2}{l}{
+        \begin{tabular}{lll}
+            \ifenglish
+                \textbf{Str} #1
+            \fi
+            \ifcatalan
+                \textbf{For} #1
+            \fi
+            \ifspanish
+                \textbf{Fue} #1
+            \fi
+            &
+            \ifenglish
+                \textbf{Dex} #2
+            \fi
+            \ifcatalan
+                \textbf{Des} #2
+            \fi
+            \ifspanish
+                \textbf{Des} #2
+            \fi
+            &
+            \ifenglish
+                \textbf{Wis} #3
+            \fi
+            \ifcatalan
+                \textbf{Sav} #3
+            \fi
+            \ifspanish
+                \textbf{Sab} #3
+            \fi
+            \\
+            \ifenglish
+                \textbf{Con} #4
+            \fi
+            \ifcatalan
+                \textbf{Con} #4
+            \fi
+            \ifspanish
+                \textbf{Con} #4
+            \fi
+            &
+            \ifenglish
+                \textbf{Int} #5
+            \fi
+            \ifcatalan
+                \textbf{Int} #5
+            \fi
+            \ifspanish
+                \textbf{Int} #5
+            \fi
+            &
+            \ifenglish
+                \textbf{Cha} #6
+            \fi
+            \ifcatalan
+                \textbf{Car} #6
+            \fi
+            \ifspanish
+                \textbf{Car} #6
             \fi
             \\
         \end{tabular}
@@ -800,7 +873,6 @@
 
 }
 
-% Monster Section Headers
 \newcommand{\ddnpcSection}[2]{
     \midrule
     \textbf{{#1}} \\
@@ -822,15 +894,15 @@
     \begin{tabular}{l}
         \toprule
 
-        \multicolumn{1}{p{0.8\linewidth}}{ \ding{72}  \hspace{\stretch{1}} 
+        \multicolumn{1}{p{0.8\linewidth}}{ \ding{72}  \hspace{\stretch{1}}
         \ifenglish
-            \textbf{RULES:} 
+            \textbf{RULES:}
         \fi
         \ifcatalan
-            \textbf{REGLES:} 
+            \textbf{REGLES:}
         \fi
         \ifspanish
-            \textbf{REGLAS:} 
+            \textbf{REGLAS:}
         \fi
         {#1} \hspace{\stretch{1}} \ding{72} } \\
         \midrule
