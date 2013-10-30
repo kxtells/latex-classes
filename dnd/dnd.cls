@@ -255,7 +255,7 @@
     \midrule
 
     %Row with HP and Initiative
-    \FPeval{\bloodied}{trunc(clip(\cmdDMK@ddm@HP/2),0)}%
+    \FPeval{\bloodied}{trunc(\cmdDMK@ddm@HP/2,0)}%
     \textbf{HP} {\cmdDMK@ddm@HP}/{\bloodied}
     &
     \ifenglish
