@@ -609,80 +609,32 @@
             \FPeval{\fue}{#1}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\fuemod}{ trunc( ((\fue - 10)/2) + \hlvl,0)}%
-            \ifenglish
-                \textbf{Str} \fue (\fuemod)
-            \fi
-            \ifcatalan
-                \textbf{For} \fue (\fuemod)
-            \fi
-            \ifspanish
-                \textbf{Fue} \fue (\fuemod)
-            \fi
+            \textbf{ \ifenglish Str \fi \ifcatalan For \fi \ifspanish Fue \fi} \fue (\fuemod)
             &
             \FPeval{\des}{#2}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\desmod}{trunc(((\des - 10)/2) + \hlvl,0)}%
-            \ifenglish
-                \textbf{Dex} \des (\desmod)
-            \fi
-            \ifcatalan
-                \textbf{Des} \des (\desmod)
-            \fi
-            \ifspanish
-                \textbf{Des} \des (\desmod)
-            \fi
+            \textbf{ \ifenglish Dex \fi \ifcatalan Des \fi \ifspanish Des \fi} \des (\desmod)
             &
             \FPeval{\sab}{#3}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\sabmod}{trunc(((\sab - 10)/2) + \hlvl,0)}%
-            \ifenglish
-                \textbf{Wis} \sab (\sabmod)
-            \fi
-            \ifcatalan
-                \textbf{Sav} \sab (\sabmod)
-            \fi
-            \ifspanish
-                \textbf{Sab} \sab (\sabmod)
-            \fi
+            \textbf{ \ifenglish Wis \fi \ifcatalan Sav \fi \ifspanish Sab \fi} \sab (\sabmod)
             \\
             \FPeval{\con}{#4}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\conmod}{trunc(((\con - 10)/2) + \hlvl,0)}%
-            \ifenglish
-                \textbf{Con} \con (\conmod)
-            \fi
-            \ifcatalan
-                \textbf{Con} \con (\conmod)
-            \fi
-            \ifspanish
-                \textbf{Con} \con (\conmod)
-            \fi
+            \textbf{ \ifenglish Con \fi \ifcatalan Con \fi \ifspanish Con \fi} \con (\conmod)
             &
             \FPeval{\int}{#5}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\intmod}{trunc(((\int- 10)/2) + \hlvl,0)}%
-            \ifenglish
-                \textbf{Int} \int (\intmod)
-            \fi
-            \ifcatalan
-                \textbf{Int} \int (\intmod)
-            \fi
-            \ifspanish
-                \textbf{Int} \int (\intmod)
-            \fi
+            \textbf{ \ifenglish Int \fi \ifcatalan Int \fi \ifspanish Int \fi} \int (\intmod)
             &
             \FPeval{\car}{#6}%
             \FPeval{\hlvl}{trunc(#7/2,0)}%
             \FPeval{\carmod}{trunc(((\car- 10)/2) + \hlvl,0)}%
-            \ifenglish
-                \textbf{Cha} \car (\carmod)
-            \fi
-            \ifcatalan
-                \textbf{Car} \car (\carmod)
-            \fi
-            \ifspanish
-                \textbf{Car} \car (\carmod)
-            \fi
+            \textbf{ \ifenglish Cha \fi \ifcatalan Car \fi \ifspanish Car \fi} \car (\carmod)
             \\
         \end{tabular}
     }\\
@@ -697,65 +649,17 @@
     % trunk(-1.5) != floor(-1.5)
     \multicolumn{2}{l}{
         \begin{tabular}{lll}
-            \ifenglish
-                \textbf{Str} #1
-            \fi
-            \ifcatalan
-                \textbf{For} #1
-            \fi
-            \ifspanish
-                \textbf{Fue} #1
-            \fi
+            \textbf{ \ifenglish Str \fi \ifcatalan For \fi \ifspanish Fue \fi} #1
             &
-            \ifenglish
-                \textbf{Dex} #2
-            \fi
-            \ifcatalan
-                \textbf{Des} #2
-            \fi
-            \ifspanish
-                \textbf{Des} #2
-            \fi
+            \textbf{ \ifenglish Dex \fi \ifcatalan Des \fi \ifspanish Des \fi} #2
             &
-            \ifenglish
-                \textbf{Wis} #3
-            \fi
-            \ifcatalan
-                \textbf{Sav} #3
-            \fi
-            \ifspanish
-                \textbf{Sab} #3
-            \fi
+            \textbf{ \ifenglish Wis \fi \ifcatalan Sav \fi \ifspanish Sab \fi} #3
             \\
-            \ifenglish
-                \textbf{Con} #4
-            \fi
-            \ifcatalan
-                \textbf{Con} #4
-            \fi
-            \ifspanish
-                \textbf{Con} #4
-            \fi
+            \textbf{ \ifenglish Con \fi \ifcatalan Con \fi \ifspanish Con \fi} #4
             &
-            \ifenglish
-                \textbf{Int} #5
-            \fi
-            \ifcatalan
-                \textbf{Int} #5
-            \fi
-            \ifspanish
-                \textbf{Int} #5
-            \fi
+            \textbf{ \ifenglish Int \fi \ifcatalan Int \fi \ifspanish Int \fi} #5
             &
-            \ifenglish
-                \textbf{Cha} #6
-            \fi
-            \ifcatalan
-                \textbf{Car} #6
-            \fi
-            \ifspanish
-                \textbf{Car} #6
-            \fi
+            \textbf{ \ifenglish Cha \fi \ifcatalan Car \fi \ifspanish Car \fi} #6
             \\
         \end{tabular}
     }\\
