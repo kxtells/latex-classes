@@ -566,19 +566,6 @@
 }
 
 
-% ABILITY MODIFIERS PER PLAYER. (PER MONSTER?)
-% 0 1 -5
-% 2 3 -4
-% 4 5 -3
-% 6 7 -2
-% 8 9 -1
-% 10 11 0
-% 12 13 1
-% 14 15 2
-% 16 17 3
-% 18 19 4
-% 20 21 5
-
 \newcommand{\ddmAlignLang}[2]{
     \midrule
     \ifenglish
@@ -591,6 +578,20 @@
         \textbf{Alineación:} #1 & \textbf{Idiomas:} #2 \\
     \fi
 }
+
+
+% ABILITY MODIFIERS PER PLAYER. (PER MONSTER?)
+% 0 1 -5
+% 2 3 -4
+% 4 5 -3
+% 6 7 -2
+% 8 9 -1
+% 10 11 0
+% 12 13 1
+% 14 15 2
+% 16 17 3
+% 18 19 4
+% 20 21 5
 
 % Calculate monster stats
 % Str, Dex, Sab, Con, Int, Car, Level, ExtraSkillsText
