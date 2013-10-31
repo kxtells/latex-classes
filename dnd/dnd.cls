@@ -223,6 +223,7 @@
     \setkeys[DMK]{ddm}{#1}
 
     \begin{scriptsize}
+    \begin{center}
     \begin{tabular}{lr}
 
     \toprule
@@ -319,8 +320,8 @@
     %FINISH MONSTER TABLE
     \bottomrule
     \end{tabular}
+    \end{center}
     \end{scriptsize}
-    \vspace{5pt}
 }
 
 % Monster Section Headers
@@ -611,6 +612,7 @@
     \setkeys[DMK]{npc}{#1}
 
     \begin{scriptsize}
+    \begin{center}
     \begin{tabular*}{0.9\linewidth}{l}
     \toprule
 
@@ -623,6 +625,7 @@
     %FINISH NPC table
     \bottomrule
     \end{tabular*}
+    \begin{center}
     \end{scriptsize}
     \vspace{5pt}
 
@@ -635,6 +638,7 @@
 }
 
 \newcommand{\ddSimpleObject}[2]{
+    \begin{center}
     \begin{tabular}{l}
         \toprule
         \multicolumn{1}{p{0.8\linewidth}}{ \ding{125}  \hspace{\stretch{1}} \textbf{{#1}} \hspace{\stretch{1}} \ding{126} } \\
@@ -642,10 +646,11 @@
         \multicolumn{1}{p{0.8\linewidth}}{{#2}} \\
         \bottomrule
     \end{tabular}
-    \vspace{5pt}
+    \end{center}
 }
 
 \newcommand{\ddRuleReminder}[2]{
+    \begin{center}
     \begin{tabular}{l}
         \toprule
 
@@ -655,7 +660,7 @@
         \multicolumn{1}{p{0.8\linewidth}}{{#2}} \\
         \bottomrule
     \end{tabular}
-    \vspace{5pt}
+    \end{center}
 }
 
 \newcommand{\ddMonsterLore}[2]{
