@@ -38,13 +38,22 @@
 % do not stretch text to fill the whole page
 \raggedbottom
 
+%\renewcommand{\maketitle}{%
+%      {\Large\@title\par}%
+%      \medskip
+%      {\large\@author\par}%
+%      \medskip
+%      {\itshape\@date\par}%
+%      \clearpage
+%}
+
+
 %page handling
 \newcommand{\newevenside}{
         \ifthenelse{\isodd{\thepage}}{\clearpage}{
         \clearpage
         \phantom{placeholder}% doesn't appear on page
         \thispagestyle{empty} % if want no header/footer
-        \clearpage
         }
 }
 
@@ -103,7 +112,7 @@
 % The other will just print the Level and XP passed as parameters
 
 \newcommand{\enclvlNC}[2]{
-    Nivell encontre #1, (#2 XP)
+    \transl{Envounter Level}{Nivell Encontre}{Nivel Encuentro} #1, (#2 XP)
     \newline
 }
 
@@ -143,7 +152,8 @@
             }
         }
     }
-    Nivell encontre #1 [\xp], (#3 XP)
+
+    \transl{Envounter Level}{Nivell Encontre}{Nivel Encuentro} #1 [\xp], (#3 XP)
     \newline
 }
 
@@ -612,8 +622,7 @@
     \setkeys[DMK]{npc}{#1}
 
     \begin{scriptsize}
-    \begin{center}
-    \begin{tabular*}{0.9\linewidth}{l}
+    \begin{tabular}{l}
     \toprule
 
     \rowcolor[gray]{0.8}
@@ -624,10 +633,9 @@
 {
     %FINISH NPC table
     \bottomrule
-    \end{tabular*}
-    \begin{center}
+    \end{tabular}
     \end{scriptsize}
-    \vspace{5pt}
+    %\vspace{5pt}
 
 }
 
