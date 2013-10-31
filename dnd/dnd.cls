@@ -1,4 +1,4 @@
-\LoadClassWithOptions{book}
+\LoadClass[10pt,twocolumn,a4paper]{book}
 
 \newif\ifcatalan
 \newif\ifspanish
