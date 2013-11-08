@@ -658,7 +658,7 @@
     \bottomrule
     \end{tabular}
     \end{scriptsize}
-    %\vspace{5pt}
+    \vspace{5pt}
 
 }
 
