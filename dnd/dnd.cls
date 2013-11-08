@@ -7,6 +7,12 @@
 \DeclareOption{catalan}{\catalantrue \englishfalse}
 \DeclareOption{spanish}{\spanishtrue \englishfalse}
 \DeclareOption{english}{}
+
+%Using the icons. By default it is activated. But you can specify noicons
+%if you want to
+\newif\ificons
+\iconstrue
+\DeclareOption{noicons}{\iconsfalse}
 \ProcessOptions\relax
 
 \NeedsTeXFormat{LaTeX2e} %Latex Version
@@ -23,6 +29,23 @@
 \RequirePackage[margin=0.75in]{geometry}
 \RequirePackage{pifont}
 \RequirePackage[utf8]{inputenc}
+
+
+\ificons
+    \RequirePackage[T1]{fontenc}
+    \font\ttficons font/dnd4eicons at9pt
+
+    \newcommand{\iconmelee}{{\ttficons m}}
+    \newcommand{\iconranged}{{\ttficons r}}
+    \newcommand{\iconclose}{{\ttficons c}}
+    \newcommand{\iconarea}{{\ttficons a}}
+    \newcommand{\iconmeleebasic}{{\ttficons M}}
+    \newcommand{\iconrabgedbasic}{{\ttficons R}}
+    \newcommand{\iconareabasic}{{\ttficons A}}
+    \newcommand{\iconclosebasic}{{\ttficons C}}
+    \newcommand{\icondice}[1]{{\ttficons #1}}
+
+\fi
 
 
 % Renew the array and indent sizes
