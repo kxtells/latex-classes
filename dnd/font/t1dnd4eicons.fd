@@ -1,0 +1,3 @@
+\ProvidesFile{t1dnd4eicons.fd}[Dungeons Dragons 4e font]
+\DeclareFontFamily{T1}{dnd4eicons}{}
+\DeclareFontShape{T1}{dnd4eicons}{m}{n}{ <-> dnd4eicons}{}
